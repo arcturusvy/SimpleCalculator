@@ -1,6 +1,334 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".SimpleCalcActivity"
+    tools:ignore="TouchTargetSizeCheck">
 
+    <!-- Дисплей -->
+    <TextView
+        android:id="@+id/tvDisplay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="bottom|end"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/keypadContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Контейнер для кнопок (80% висоти екрану) -->
+    <LinearLayout
+        android:id="@+id/keypadContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.80"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- РЯДОК 1 (10 кнопок) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <!-- 6 наукових -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenParen"
+                style="@style/AdvancedCalcButton"
+                android:text="(" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCloseParen"
+                style="@style/AdvancedCalcButton"
+                android:text=")" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMc"
+                style="@style/AdvancedCalcButton"
+                android:text="mc" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMplus"
+                style="@style/AdvancedCalcButton"
+                android:text="m+" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMminus"
+                style="@style/AdvancedCalcButton"
+                android:text="m-" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMr"
+                style="@style/AdvancedCalcButton"
+                android:text="mr" />
+            <!-- 4 стандартних (Верхній ряд) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDel"
+                style="@style/TopStandardButton"
+                android:text="⌫" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAC"
+                style="@style/TopStandardButton"
+                android:text="AC" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPercent"
+                style="@style/TopStandardButton"
+                android:text="%" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDivide"
+                style="@style/OperatorButton"
+                android:text="÷" />
+        </LinearLayout>
+
+        <!-- РЯДОК 2 (10 кнопок) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <!-- 6 наукових -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn2nd"
+                style="@style/AdvancedCalcButton"
+                android:text="2nd" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnX2"
+                style="@style/AdvancedCalcButton"
+                android:text="x²" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnX3"
+                style="@style/AdvancedCalcButton"
+                android:text="x³" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnXy"
+                style="@style/AdvancedCalcButton"
+                android:text="xʸ" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEx"
+                style="@style/AdvancedCalcButton"
+                android:text="eˣ" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn10x"
+                style="@style/AdvancedCalcButton"
+                android:text="10ˣ" />
+            <!-- 4 стандартних (Цифри 7-9 і множення) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn7"
+                style="@style/NumberButton"
+                android:text="7" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn8"
+                style="@style/NumberButton"
+                android:text="8" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn9"
+                style="@style/NumberButton"
+                android:text="9" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMultiply"
+                style="@style/OperatorButton"
+                android:text="×" />
+        </LinearLayout>
+
+        <!-- РЯДОК 3 (10 кнопок) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <!-- 6 наукових -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn1x"
+                style="@style/AdvancedCalcButton"
+                android:text="1/x" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSqrt2"
+                style="@style/AdvancedCalcButton"
+                android:text="²√x" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSqrt3"
+                style="@style/AdvancedCalcButton"
+                android:text="³√x" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSqrtY"
+                style="@style/AdvancedCalcButton"
+                android:text="ʸ√x" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLn"
+                style="@style/AdvancedCalcButton"
+                android:text="ln" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLog10"
+                style="@style/AdvancedCalcButton"
+                android:text="log₁₀" />
+            <!-- 4 стандартних (Цифри 4-6 і мінус) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn4"
+                style="@style/NumberButton"
+                android:text="4" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn5"
+                style="@style/NumberButton"
+                android:text="5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn6"
+                style="@style/NumberButton"
+                android:text="6" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMinus"
+                style="@style/OperatorButton"
+                android:text="-" />
+        </LinearLayout>
+
+        <!-- РЯДОК 4 (10 кнопок) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <!-- 6 наукових -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFact"
+                style="@style/AdvancedCalcButton"
+                android:text="x!" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSin"
+                style="@style/AdvancedCalcButton"
+                android:text="sin" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCos"
+                style="@style/AdvancedCalcButton"
+                android:text="cos" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTan"
+                style="@style/AdvancedCalcButton"
+                android:text="tan" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnE"
+                style="@style/AdvancedCalcButton"
+                android:text="e"
+                android:textStyle="italic" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEE"
+                style="@style/AdvancedCalcButton"
+                android:text="EE" />
+            <!-- 4 стандартних (Цифри 1-3 і плюс) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn1"
+                style="@style/NumberButton"
+                android:text="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn2"
+                style="@style/NumberButton"
+                android:text="2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn3"
+                style="@style/NumberButton"
+                android:text="3" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPlus"
+                style="@style/OperatorButton"
+                android:text="+" />
+        </LinearLayout>
+
+        <!-- РЯДОК 5 (10 кнопок) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <!-- 6 наукових -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRand"
+                style="@style/AdvancedCalcButton"
+                android:text="Rand" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSinh"
+                style="@style/AdvancedCalcButton"
+                android:text="sinh" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCosh"
+                style="@style/AdvancedCalcButton"
+                android:text="cosh" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTanh"
+                style="@style/AdvancedCalcButton"
+                android:text="tanh" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPi"
+                style="@style/AdvancedCalcButton"
+                android:text="π"
+                android:textSize="20sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRad"
+                style="@style/AdvancedCalcButton"
+                android:text="Rad" />
+            <!-- 4 стандартних (+/-, 0, Кома, дорівнює) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPlusMinus"
+                style="@style/NumberButton"
+                android:text="+/-" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn0"
+                style="@style/NumberButton"
+                android:text="0" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnComma"
+                style="@style/NumberButton"
+                android:text="," />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEqual"
+                style="@style/OperatorButton"
+                android:text="=" />
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="btn_bg_number">#333333</color>
+    <color name="btn_text_number">#FFFFFF</color>
+    <color name="btn_bg_special">#A5A5A5</color>
+    <color name="btn_text_special">#000000</color>
+    <color name="btn_bg_op">#FF9F0A</color>
+    <color name="btn_text_op">#FFFFFF</color>
+    <color name="btn_bg_sci">#2E2E2E</color>
+    <color name="btn_text_sci">#FFFFFF</color>
 </resources>
