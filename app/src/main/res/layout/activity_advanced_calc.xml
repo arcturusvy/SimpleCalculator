@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1C1C1C"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tvDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom|end"
+        android:padding="16dp"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="64sp" />
+
+    <!-- Ряд наукових функцій -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/btnPi" style="@style/ScientificButton" android:text="π" />
+        <Button android:id="@+id/btnSquare" style="@style/ScientificButton" android:text="x²" />
+        <Button android:id="@+id/btnRoot" style="@style/ScientificButton" android:text="√" />
+        <Button android:id="@+id/btnBack" style="@style/ScientificButton" android:text="⌫" />
+    </LinearLayout>
+
+    <!-- Основна сітка (я покажу один ряд для прикладу, інші додаються так само) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/btnAC" style="@style/CalcButtonGray" android:text="AC" />
+        <Button android:id="@+id/btnPlusMinus" style="@style/CalcButtonGray" android:text="+/-" />
+        <Button android:id="@+id/btnPercent" style="@style/CalcButtonGray" android:text="%" />
+        <Button android:id="@+id/btnDivide" style="@style/CalcButtonOrange" android:text="÷" />
+    </LinearLayout>
+
+    <!-- Тут додаєш ряди з цифрами 7-8-9, 4-5-6, 1-2-3 і 0 за такою ж логікою -->
+</LinearLayout>

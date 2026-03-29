@@ -1,0 +1,21 @@
+# IDE and System files
+.idea/
+*.iml
+.DS_Store
+.gradle/
+.kotlin/
+captures/
+
+build/
+**/build/
+
+local.properties
+
+*.jks
+*.keystore
+*.p12
+*.google_play_keys.json
+
+.externalNativeBuild/
+.cxx/
+*.hprof

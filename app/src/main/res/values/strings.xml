@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SimpleCalculator</string>
+    <string name="main_title">Calculator</string>
+    <string name="btn_simple">Simple</string>
+    <string name="btn_advanced">Advanced</string>
+    <string name="btn_about">About</string>
+    <string name="btn_exit">Exit</string>
+    <string name="about_title">About program</string>
+    <string name="about_message">Calculator.\nMaksym Holembiovskyi 252500</string>
+</resources>
