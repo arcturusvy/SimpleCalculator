@@ -73,7 +73,6 @@ class SimpleCalcActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnPercent).setOnClickListener {
             val text = tvDisplay.text.toString()
-            // Просто додаємо символ %, розрахунок буде в calculateResult
             if (text.isNotEmpty() && text.last().isDigit()) {
                 tvDisplay.append("%")
                 isNewOperation = false
@@ -149,7 +148,7 @@ class SimpleCalcActivity : AppCompatActivity() {
                     // Якщо просто число (напр. 5 * 10%)
                     tokens[i - 1] = (percentageValue / 100).toString()
                 }
-                tokens.removeAt(i) // Видаляємо символ %
+                tokens.removeAt(i)
                 i--
             }
             i++
