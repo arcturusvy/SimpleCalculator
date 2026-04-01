@@ -41,7 +41,5 @@ class MainActivity : AppCompatActivity() {
         exitButton.setOnClickListener {
             finishAffinity()
         }
-
-
     }
 }

@@ -36,7 +36,6 @@
         app:layout_constraintHeight_percent="0.75"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- рядок 1 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -74,7 +73,6 @@
                 android:text="mr" />
         </LinearLayout>
 
-        <!--рядок 2 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -112,7 +110,6 @@
                 android:text="10ˣ" />
         </LinearLayout>
 
-        <!--рядок 3 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -150,7 +147,6 @@
                 android:text="log₁₀" />
         </LinearLayout>
 
-        <!--рядок 4 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -189,7 +185,6 @@
                 android:text="EE" />
         </LinearLayout>
 
-        <!-- рядок 5 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -228,7 +223,6 @@
                 android:text="Rad" />
         </LinearLayout>
 
-        <!--(4 кнопки: Видалити, AC, %, ÷) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -256,7 +250,6 @@
                 android:text="÷" />
         </LinearLayout>
 
-        <!-- (4 кнопки: 7, 8, 9, ×) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -284,7 +277,6 @@
                 android:text="×" />
         </LinearLayout>
 
-        <!--(4 кнопки: 4, 5, 6, -) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -312,7 +304,6 @@
                 android:text="-" />
         </LinearLayout>
 
-        <!--(4 кнопки: 1, 2, 3, +) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -340,7 +331,6 @@
                 android:text="+" />
         </LinearLayout>
 
-        <!--(4 кнопки: +/-, 0, Кома, =) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
