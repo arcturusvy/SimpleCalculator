@@ -29,8 +29,12 @@ class AdvancedCalcActivity : AppCompatActivity() {
         val tvDisplay = findViewById<TextView>(R.id.tvDisplay)
 
         if (savedInstanceState != null) {
-            tvDisplay.text = savedInstanceState.getString("ADVANCED_DISPLAY")
+            tvDisplay.text = savedInstanceState.getString("DISPLAY_TEXT")
+            isNewOperation = savedInstanceState.getBoolean("IS_NEW_OP")
+            isRadianMode = savedInstanceState.getBoolean("IS_RADIAN")
+            memoryValue = savedInstanceState.getDouble("MEMORY_VALUE")
         }
+
 
         val numberIDs = listOf(
             R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3,
@@ -317,6 +321,9 @@ class AdvancedCalcActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         val tvDisplay = findViewById<TextView>(R.id.tvDisplay)
         outState.putString("ADVANCED_DISPLAY", tvDisplay.text.toString())
+        outState.putString("IS_NEW_OP", isNewOperation.toString())
+        outState.putString("IS_RADIAN", isRadianMode.toString())
+        outState.putString("MEMORY_VALUE", memoryValue.toString())
     }
 
 }
