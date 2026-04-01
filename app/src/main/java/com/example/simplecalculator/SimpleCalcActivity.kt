@@ -126,26 +126,20 @@ class SimpleCalcActivity : AppCompatActivity() {
             .replace("÷", "/")
             .replace(",", ".")
 
-        // розбиваємо рядок, зберігаючи оператори та знак %
         val tokens = replaced.split(Regex("(?<=[-+*/%])|(?=[-+*/%])"))
             .filter { it.isNotBlank() }
             .toMutableList()
 
         if (tokens.isEmpty()) return 0.0
 
-        // Обробка відсотків
         var i = 0
         while (i < tokens.size) {
             if (tokens[i] == "%") {
                 val percentageValue = tokens[i - 1].toDouble()
-
-                // Якщо є база (напр. 12 - 25%)
                 if (i >= 3 && (tokens[i - 2] == "+" || tokens[i - 2] == "-")) {
                     val baseValue = tokens[i - 3].toDouble()
-                    val calculatedPercent = baseValue * (percentageValue / 100)
-                    tokens[i - 1] = calculatedPercent.toString()
+                    tokens[i - 1] = (baseValue * (percentageValue / 100)).toString()
                 } else {
-                    // Якщо просто число (напр. 5 * 10%)
                     tokens[i - 1] = (percentageValue / 100).toString()
                 }
                 tokens.removeAt(i)
@@ -154,20 +148,38 @@ class SimpleCalcActivity : AppCompatActivity() {
             i++
         }
 
-        var result = tokens[0].toDouble()
-        var j = 1
+        var j = 0
         while (j < tokens.size) {
-            val operator = tokens[j]
-            val nextVal = tokens[j + 1].toDouble()
+            if (tokens[j] == "*" || tokens[j] == "/") {
+                val left = tokens[j - 1].toDouble()
+                val operator = tokens[j]
+                val right = tokens[j + 1].toDouble()
+
+                val res = if (operator == "*") left * right
+                else if (right != 0.0) left / right
+                else throw ArithmeticException("Division by zero")
+
+                tokens[j - 1] = res.toString()
+                tokens.removeAt(j)
+                tokens.removeAt(j)
+                j--
+            }
+            j++
+        }
+
+            var result = tokens[0].toDouble()
+        var k = 1
+        while (k < tokens.size) {
+            val operator = tokens[k]
+            val nextVal = tokens[k + 1].toDouble()
 
             when (operator) {
                 "+" -> result += nextVal
                 "-" -> result -= nextVal
-                "*" -> result *= nextVal
-                "/" -> if (nextVal != 0.0) result /= nextVal else throw ArithmeticException()
             }
-            j += 2
+            k += 2
         }
+
         return result
     }
 
