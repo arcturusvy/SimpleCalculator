@@ -28,7 +28,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
 
         val tvDisplay = findViewById<TextView>(R.id.tvDisplay)
 
-        // --- цифри та кома ---
         val numberIDs = listOf(
             R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3,
             R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7,
@@ -60,7 +59,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
             }
         }
 
-        // --- базові оператори (+, -, ×, ÷) ---
         val operationIDs = listOf(R.id.btnPlus, R.id.btnMinus, R.id.btnMultiply, R.id.btnDivide)
 
         operationIDs.forEach { id ->
@@ -74,7 +72,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
             }
         }
 
-        // --- прості функції (AC, %, +/-) ---
         findViewById<Button>(R.id.btnAC).setOnClickListener {
             tvDisplay.text = "0"
             isNewOperation = true
@@ -96,7 +93,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
             }
         }
 
-        // --- кнопка видалення (⌫) ---
         findViewById<Button>(R.id.btnDel).setOnClickListener {
             val text = tvDisplay.text.toString()
             if (text.length > 1) tvDisplay.text = text.dropLast(1)
@@ -105,7 +101,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
             }
         }
 
-        // --- робота з пам'яттю (mc, m+, m-, mr) ---
         findViewById<Button>(R.id.btnMc).setOnClickListener { memoryValue = 0.0 }
 
         findViewById<Button>(R.id.btnMplus).setOnClickListener {
@@ -131,7 +126,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
             isNewOperation = false
         }
 
-        // --- дужки та режими ---
         findViewById<Button>(R.id.btnOpenParen).setOnClickListener { appendText(tvDisplay, "(") }
         findViewById<Button>(R.id.btnCloseParen).setOnClickListener { appendText(tvDisplay, ")") }
 
@@ -141,7 +135,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
             btnRad.text = if (isRadianMode) "Deg" else "Rad"
         }
 
-        // --- тригонометрія ---
         findViewById<Button>(R.id.btnSin).setOnClickListener { appendText(tvDisplay, "sin(") }
         findViewById<Button>(R.id.btnCos).setOnClickListener { appendText(tvDisplay, "cos(") }
         findViewById<Button>(R.id.btnTan).setOnClickListener { appendText(tvDisplay, "tan(") }
@@ -149,7 +142,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnCosh).setOnClickListener { appendText(tvDisplay, "cosh(") }
         findViewById<Button>(R.id.btnTanh).setOnClickListener { appendText(tvDisplay, "tanh(") }
 
-        // --- корені, дроби та логарифми ---
         findViewById<Button>(R.id.btn1x).setOnClickListener { appendText(tvDisplay, "1/") }
         findViewById<Button>(R.id.btnSqrt2).setOnClickListener { appendText(tvDisplay, "sqrt(") }
         findViewById<Button>(R.id.btnSqrt3).setOnClickListener { appendText(tvDisplay, "cbrt(") }
@@ -157,7 +149,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnLn).setOnClickListener { appendText(tvDisplay, "ln(") }
         findViewById<Button>(R.id.btnLog10).setOnClickListener { appendText(tvDisplay, "log(") }
 
-        // --- степені, константи та інше ---
         findViewById<Button>(R.id.btnX2).setOnClickListener { appendText(tvDisplay, "^2") }
         findViewById<Button>(R.id.btnX3).setOnClickListener { appendText(tvDisplay, "^3") }
         findViewById<Button>(R.id.btnXy).setOnClickListener { appendText(tvDisplay, "^") }
@@ -176,7 +167,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btn2nd).setOnClickListener {}
 
-        // --- кнопка = (обчислення) ---
         findViewById<Button>(R.id.btnEqual).setOnClickListener {
             val expression = tvDisplay.text.toString()
             try {
@@ -198,7 +188,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
         }
     }
 
-    // --- допоміжні функції ---
     private fun appendText(tv: TextView, textToAppend: String) {
         if (isNewOperation || tv.text.toString() == "0") {
             tv.text = textToAppend
@@ -230,7 +219,6 @@ class AdvancedCalcActivity : AppCompatActivity() {
         }
     }
 
-    // --- парсер (магія обчислень) ---
     private fun eval(str: String): Double {
         return object : Any() {
             var pos = -1

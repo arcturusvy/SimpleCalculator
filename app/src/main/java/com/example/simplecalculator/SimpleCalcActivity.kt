@@ -86,7 +86,6 @@ class SimpleCalcActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btnPlusMinus).setOnClickListener {
             val text = tvDisplay.text.toString()
-            // Працює коректно тільки для одного числа на екрані
             if (text.isNotEmpty() && !text.contains(Regex("[+×÷-]"))) {
                 val currentValue = text.replace(",", ".").toDouble()
                 tvDisplay.text = formatResult(-currentValue)
@@ -115,7 +114,6 @@ class SimpleCalcActivity : AppCompatActivity() {
     }
 
     private fun canAddComa(text: String): Boolean {
-        // Розбиваємо вираз, щоб перевірити кому тільки в останньому числі
         val parts = text.split("+", "-", "×", "÷", "%")
         val lastNumber = parts.last()
         return !lastNumber.contains(",")
