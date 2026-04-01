@@ -33,6 +33,9 @@ class AdvancedCalcActivity : AppCompatActivity() {
             isNewOperation = savedInstanceState.getBoolean("IS_NEW_OP")
             isRadianMode = savedInstanceState.getBoolean("IS_RADIAN")
             memoryValue = savedInstanceState.getDouble("MEMORY_VALUE")
+
+            val btnRad = findViewById<Button>(R.id.btnRad)
+            btnRad.text = if (isRadianMode) "Deg" else "Rad"
         }
 
 
@@ -320,10 +323,11 @@ class AdvancedCalcActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         val tvDisplay = findViewById<TextView>(R.id.tvDisplay)
-        outState.putString("ADVANCED_DISPLAY", tvDisplay.text.toString())
-        outState.putString("IS_NEW_OP", isNewOperation.toString())
-        outState.putString("IS_RADIAN", isRadianMode.toString())
-        outState.putString("MEMORY_VALUE", memoryValue.toString())
+
+        outState.putString("DISPLAY_TEXT", tvDisplay.text.toString())
+        outState.putBoolean("IS_NEW_OP", isNewOperation)
+        outState.putBoolean("IS_RADIAN", isRadianMode)
+        outState.putDouble("MEMORY_VALUE", memoryValue)
     }
 
 }
