@@ -28,6 +28,10 @@ class AdvancedCalcActivity : AppCompatActivity() {
 
         val tvDisplay = findViewById<TextView>(R.id.tvDisplay)
 
+        if (savedInstanceState != null) {
+            tvDisplay.text = savedInstanceState.getString("ADVANCED_DISPLAY")
+        }
+
         val numberIDs = listOf(
             R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn3,
             R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7,
@@ -309,4 +313,10 @@ class AdvancedCalcActivity : AppCompatActivity() {
             }
         }.parse()
     }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val tvDisplay = findViewById<TextView>(R.id.tvDisplay)
+        outState.putString("ADVANCED_DISPLAY", tvDisplay.text.toString())
+    }
+
 }
